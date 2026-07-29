@@ -111,21 +111,7 @@ def analyze():
 
 
 
-    result["ai_summary"] = get_resume_summary(
-        resume_text
-    )
-
-
-
-    result["ai_improvement"] = get_resume_improvement(
-        resume_text
-    )
-
-
-
-    result["interview_questions"] = get_interview_questions(
-        resume_text
-    )
+    result["ai_analysis"] = get_complete_analysis(resume_text)
 
 
 

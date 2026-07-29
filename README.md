@@ -2,19 +2,33 @@
 
 AI Resume Analyzer built using Flask + Python + Gemini AI.
 
-## Features
 
-- Resume Upload
-- PDF Parsing
-- Skill Extraction
+- ## 🚀 Live Demo
+
+🔗 https://resume-analyser-hfl6.onrender.com
+
+## ✨ Features
+
+- Upload PDF Resume
 - ATS Score
-- Missing Skills
-- AI Suggestions
-- Resume Summary
+- Skill Extraction
+- Missing Skills Detection
+- AI Resume Analysis
 - Interview Questions
-- Job Recommendation
+- Responsive UI
+
+## 🛠️ Tech Stack
+
+- Python
+- Flask
+- HTML
+- CSS
+- JavaScript
+- PyMuPDF
+- OpenRouter API
 
 ## Installation
+
 
 ```bash
 pip install -r requirements.txt

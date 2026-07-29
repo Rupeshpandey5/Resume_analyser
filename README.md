@@ -5,8 +5,7 @@ AI Resume Analyzer built using Flask + Python + Gemini AI.
 
 - ## 🚀 Live Demo
 
-🔗 https://resume-analyser-hfl6.onrender.com
-
+🔗  https://resume-analyser-1-w1si.onrender.com
 ## ✨ Features
 
 - Upload PDF Resume

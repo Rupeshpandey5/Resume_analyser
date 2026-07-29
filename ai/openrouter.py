@@ -3,52 +3,52 @@ import requests
 
 from dotenv import load_dotenv
 
-
 load_dotenv()
 
 
-API_KEY = os.getenv(
-    "OPENROUTER_API_KEY"
-)
-
+API_KEY = os.getenv("OPENROUTER_API_KEY")
 
 URL = "https://openrouter.ai/api/v1/chat/completions"
 
 
-
 def ask_ai(prompt):
+
+    if not API_KEY:
+        return "AI Error: OpenRouter API key missing."
 
     try:
 
         headers = {
-
             "Authorization": f"Bearer {API_KEY}",
-
             "Content-Type": "application/json"
-
         }
 
 
         data = {
-    "model": "inclusionai/ling-3.0-flash:free",
-    "messages": [
-        {
-            "role": "user",
-            "content": prompt
+
+            "model": "inclusionai/ling-3.0-flash:free",
+
+            "messages": [
+                {
+                    "role": "user",
+                    "content": prompt
+                }
+            ],
+
+            "temperature": 0.3
+
         }
-    ]
-}
 
 
         response = requests.post(
-
             URL,
-
             headers=headers,
-
-            json=data
-
+            json=data,
+            timeout=20
         )
+
+
+        response.raise_for_status()
 
 
         result = response.json()
@@ -59,104 +59,106 @@ def ask_ai(prompt):
             return result["choices"][0]["message"]["content"]
 
 
-        return str(result)
+        else:
 
+            return "AI Error Response: " + str(result)
+
+
+
+    except requests.Timeout:
+
+        return "⚠ AI request timed out. Please try again."
+
+
+    except requests.RequestException as e:
+
+        return f"⚠ OpenRouter API Error: {str(e)}"
 
 
     except Exception as e:
 
-        return "AI Error: " + str(e)
+        return f"⚠ AI Error: {str(e)}"
 
 
 
 
 
-def get_resume_summary(resume_text):
-
-
-    prompt = f"""
-
-You are an AI Resume Analyzer.
-
-Analyze this resume.
-
-Give:
-
-1. Candidate Summary
-2. Technical Skills
-3. Strengths
-4. Weaknesses
-5. Suitable Job Roles
-
-
-Resume:
-
-{resume_text}
-
-"""
-
-
-    return ask_ai(prompt)
-
-
-
-
-
-
-def get_resume_improvement(resume_text):
+def get_complete_analysis(resume_text):
 
 
     prompt = f"""
 
-You are a professional resume expert.
+You are an expert AI Resume Analyzer and ATS specialist.
 
-Review this resume and provide improvement suggestions.
+Analyze the given resume professionally.
+
+Provide the output in Markdown format.
+
+Include these sections:
+
+# Candidate Summary
+
+Give a short professional overview of the candidate.
+
+
+# Technical Skills
+
+Separate skills into categories:
+
+Programming Languages:
+Database:
+Web Technologies:
+AI/ML:
+Frameworks:
+Tools:
+
+
+# Strengths
+
+Mention strong points of the resume.
+
+
+# ATS Improvements
+
+Give suggestions to improve ATS score.
 
 Focus on:
-
-- ATS score improvement
-- Skills
-- Projects
+- Keywords
 - Formatting
-- Missing information
+- Projects
+- Skills
 
 
-Resume:
+# Missing Skills
 
-{resume_text}
-
-"""
+Mention important missing skills according to current industry requirements.
 
 
-    return ask_ai(prompt)
+# Suggested Job Roles
+
+Suggest suitable roles for this candidate.
 
 
+# Technical Interview Questions
 
-
-
-
-
-def get_interview_questions(resume_text):
-
-
-    prompt = f"""
-
-Generate interview questions from this resume.
-
-Include:
-
-Technical Questions:
-- Python
+Generate interview questions based on:
+- Programming
 - AI/ML
 - Projects
 - Database
+- Computer Science fundamentals
 
-HR Questions:
+
+# HR Interview Questions
+
+Generate common HR questions for this candidate.
+
 
 
 Resume:
 
 {resume_text}
+
 
 """
 

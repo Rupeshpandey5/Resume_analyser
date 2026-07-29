@@ -75,7 +75,9 @@ ATS Score
 
 
 
+
 <!-- Strength -->
+
 
 <h3>
 Resume Strength
@@ -91,7 +93,9 @@ Resume Strength
 
 
 
+
 <!-- Job Role -->
+
 
 <h3>
 
@@ -114,7 +118,10 @@ Recommended Job Role
 
 
 
+
+
 <!-- Skills -->
+
 
 <h3>
 
@@ -145,7 +152,9 @@ Skills Found
 
 
 
+
 <hr>
+
 
 
 
@@ -191,6 +200,7 @@ Missing Skills
 
 
 
+
 <!-- Rule Based Suggestions -->
 
 
@@ -231,12 +241,12 @@ Basic Suggestions
 
 
 
-<!-- AI SUMMARY -->
+<!-- COMPLETE AI ANALYSIS -->
 
 
 <h3>
 
-🧠 AI Resume Summary
+🧠 Complete AI Resume Analysis
 
 </h3>
 
@@ -247,76 +257,7 @@ Basic Suggestions
 
 <p>
 
-{{result.ai_summary}}
-
-</p>
-
-
-</div>
-
-
-
-
-
-
-<hr>
-
-
-
-
-
-
-<!-- AI IMPROVEMENT -->
-
-
-<h3>
-
-🚀 AI Improvement Suggestions
-
-</h3>
-
-
-<div class="ai-box">
-
-
-<p>
-
-{{result.ai_improvement}}
-
-</p>
-
-
-</div>
-
-
-
-
-
-
-<hr>
-
-
-
-
-
-
-<!-- INTERVIEW QUESTIONS -->
-
-
-<h3>
-
-🎯 AI Generated Interview Questions
-
-</h3>
-
-
-
-<div class="ai-box">
-
-
-<p>
-
-{{result.interview_questions}}
+{{result.ai_analysis | safe}}
 
 </p>
 

@@ -26,7 +26,7 @@ def ask_ai(prompt):
 
         data = {
 
-            "model": "inclusionai/ling-3.0-flash:free",
+            "model": "openrouter/free",
 
             "messages": [
                 {
@@ -71,8 +71,9 @@ def ask_ai(prompt):
 
 
     except requests.RequestException as e:
-
-        return f"⚠ OpenRouter API Error: {str(e)}"
+    if hasattr(e, "response") and e.response is not None:
+        return f"⚠ OpenRouter API Error: {e.response.status_code} - {e.response.text}"
+    return f"⚠ OpenRouter API Error: {str(e)}"
 
 
     except Exception as e:

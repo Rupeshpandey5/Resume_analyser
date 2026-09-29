@@ -23,9 +23,7 @@ def ask_ai(prompt):
             "Content-Type": "application/json"
         }
 
-
         data = {
-
             "model": "openrouter/free",
 
             "messages": [
@@ -36,9 +34,7 @@ def ask_ai(prompt):
             ],
 
             "temperature": 0.3
-
         }
-
 
         response = requests.post(
             URL,
@@ -47,45 +43,33 @@ def ask_ai(prompt):
             timeout=20
         )
 
-
         response.raise_for_status()
-
 
         result = response.json()
 
-
         if "choices" in result:
-
             return result["choices"][0]["message"]["content"]
 
-
         else:
-
             return "AI Error Response: " + str(result)
-
-
 
     except requests.Timeout:
 
         return "⚠ AI request timed out. Please try again."
 
-
     except requests.RequestException as e:
-    if hasattr(e, "response") and e.response is not None:
-        return f"⚠ OpenRouter API Error: {e.response.status_code} - {e.response.text}"
-    return f"⚠ OpenRouter API Error: {str(e)}"
 
+        if hasattr(e, "response") and e.response is not None:
+            return f"⚠ OpenRouter API Error: {e.response.status_code} - {e.response.text}"
+
+        return f"⚠ OpenRouter API Error: {str(e)}"
 
     except Exception as e:
 
         return f"⚠ AI Error: {str(e)}"
 
 
-
-
-
 def get_complete_analysis(resume_text):
-
 
     prompt = f"""
 
@@ -155,13 +139,10 @@ Generate interview questions based on:
 Generate common HR questions for this candidate.
 
 
-
 Resume:
 
 {resume_text}
 
-
 """
-
 
     return ask_ai(prompt)

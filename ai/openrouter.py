@@ -87,65 +87,132 @@ def ask_ai(prompt):
 def get_complete_analysis(resume_text):
 
     prompt = f"""
-You are an expert AI Resume Analyzer and ATS specialist.
+You are an expert AI Resume Analyzer, ATS specialist, and technical interviewer.
 
-Analyze the given resume professionally.
+Analyze the candidate's resume carefully.
 
-Keep the response concise so it can be generated quickly.
+IMPORTANT:
+Your response MUST include ALL sections below.
+Do NOT provide only a summary.
+Do NOT skip the interview questions sections.
 
-Provide the output in Markdown format.
+Keep the response concise but useful.
 
-Include these sections:
+Return the answer in Markdown format.
 
 # Candidate Summary
 
-Give a short professional overview of the candidate.
+Write a short professional summary of the candidate based strictly on the resume.
 
 # Technical Skills
 
-Separate skills into categories:
+Categorize the candidate's skills:
 
-Programming Languages:
-Database:
-Web Technologies:
-AI/ML:
-Frameworks:
-Tools:
+### Programming Languages
+### Database
+### Web Technologies
+### AI/ML
+### Frameworks
+### Tools
 
 # Strengths
 
-Mention the strongest points of the resume.
+Mention 4-5 important strengths visible from the resume.
 
 # ATS Improvements
 
-Give practical suggestions to improve ATS score.
+Give practical suggestions to improve the ATS score.
 
 Focus on:
 - Keywords
 - Formatting
-- Projects
 - Skills
+- Projects
+- Resume content
 
 # Missing Skills
 
-Mention important missing skills according to current industry requirements.
+Mention important skills the candidate should learn based on their current skills, projects, and AI/ML career direction.
 
 # Suggested Job Roles
 
-Suggest suitable roles for this candidate.
+Suggest suitable job roles based on the candidate's skills and projects.
 
 # Technical Interview Questions
 
-Generate a few interview questions based on:
-- Programming
-- AI/ML
-- Projects
-- Database
-- Computer Science fundamentals
+THIS SECTION IS REQUIRED.
+
+Generate 10 technical interview questions specifically based on THIS resume.
+
+The questions should cover:
+
+1. Python
+2. Java
+3. SQL / Database
+4. Flask / Web Development
+5. AI / Machine Learning
+6. APIs
+7. Git / GitHub
+8. Project-related questions
+9. Computer Science fundamentals
+10. Problem solving
+
+For project-related questions, use the actual projects mentioned in the resume.
+
+Format them as:
+
+1. Question
+2. Question
+3. Question
+...
+10. Question
 
 # HR Interview Questions
 
-Generate a few common HR questions suitable for this candidate.
+THIS SECTION IS REQUIRED.
+
+Generate 5 HR interview questions suitable for this candidate.
+
+Include questions such as:
+- Tell me about yourself.
+- Why should we hire you?
+- Why did you choose AI/ML?
+- What are your strengths and weaknesses?
+- Where do you see yourself in the future?
+
+Make the questions relevant to the candidate's resume.
+
+# Project Interview Questions
+
+THIS SECTION IS REQUIRED.
+
+Generate 5 questions specifically about the candidate's projects.
+
+Ask about:
+- Project purpose
+- Technologies used
+- How the project works
+- Challenges faced
+- Future improvements
+
+# Interview Preparation Tips
+
+Give 5 short tips for preparing for an interview based on this resume.
+
+IMPORTANT FINAL RULE:
+The response MUST contain:
+1. Candidate Summary
+2. Technical Skills
+3. Strengths
+4. ATS Improvements
+5. Missing Skills
+6. Suggested Job Roles
+7. Technical Interview Questions
+8. HR Interview Questions
+9. Project Interview Questions
+10. Interview Preparation Tips
+
+Do not omit any section.
 
 Resume:
 

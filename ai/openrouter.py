@@ -30,7 +30,7 @@ def ask_ai(prompt):
             }
         ],
         "temperature": 0.3,
-        "max_tokens": 1200
+        "max_tokens": 2000
     }
 
     try:
